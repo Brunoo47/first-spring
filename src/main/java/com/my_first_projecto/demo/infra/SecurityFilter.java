@@ -6,6 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +28,7 @@ protected void doFilterInternal(HttpServletRequest request, HttpServletResponse 
     var token = this.recoverToken(request);
     var login = tokenService.ValidateToken(token);
     if (login != null) {
-        User user = userRepository.findBy(login).orElseThrow(()-> new RuntimeException("User not found"))
+        User user = userRepository.findBy(login).orElseThrow(()-> new RuntimeException("User not found"));
         var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
         var authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
         SecurityContextHolder.getContext().setAuthentication(authentication);
