@@ -17,4 +17,5 @@ public class CostumUserDetailsService implements UserDetailsService {
         User user = this.repository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("User not found"));
         return new org.springframework.security.core.userdetails.User(User.getEmail(), user.getPassword(), new ArrayList<>());
     }
+
 }

@@ -71,8 +71,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.auth0</groupId>
-			<artifactId>auth0</artifactId>
-			<version>1.45.0</version>
+			<artifactId>mvc-auth-commons</artifactId>
+			<version>1.10.0</version>
 		</dependency>
 	</dependencies>
 
